@@ -5,9 +5,7 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 
 
 <!--
@@ -52,4 +50,15 @@
 
 
 -->
-@(await Html.RenderComponentAsync<BlogList>(RenderMode.ServerPrerendered, new { blogList = Model }))
+@if (User.Identity.IsAuthenticated)
+{
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p> @(await Html.RenderComponentAsync<BlogList>(RenderMode.ServerPrerendered, new { blogList = Model }))
+
+                <h3>You have successfully logged in</h3> }
+                            else
+                            {
+                <h3>Login to view list or to create a new blog</h3>
+                            }
