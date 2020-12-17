@@ -38,6 +38,8 @@ namespace BasicBlog
                   Configuration.GetConnectionString("BlogDbContext")));
 
 
+            services.AddServerSideBlazor();
+
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

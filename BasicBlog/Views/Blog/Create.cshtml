@@ -1,8 +1,7 @@
 @model BasicBlog.Models.BgModel
+@using BasicBlog.Components
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
 <h1>Create</h1>
 
@@ -41,3 +40,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+@*
+    @(await Html.RenderComponentAsync<BlogEdit>(RenderMode.ServerPrerendered, new { baseUrl = "/Blog", FormMethod = "POST"}))
+
+
+*@

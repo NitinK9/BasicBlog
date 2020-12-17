@@ -1,0 +1,64 @@
+﻿@using BasicBlog.Models
+
+<h3>Blog List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Contents
+            </th>
+            <th>
+                Author Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in blogList)
+        {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Content
+                </td>
+                <td>
+                    @item.AuthorEmail
+                </td>
+                <td>
+                   
+                    
+                        <a href="Blog/Edit/@item.ID">Edit</a> |
+                        <a href="Blog/Details/@item.ID">Details</a> |
+                        <a href="Blog/Delete/@item.ID">Delete</a>
+
+   
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+    [Parameter]
+    public IEnumerable<BgModel> blogList { get; set; }
+}
+
+
+@code {
+
+}

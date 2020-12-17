@@ -1,0 +1,69 @@
+﻿@using BasicBlog.Models
+
+<form action="@url" method="@formMethod">
+    <input type="hidden" name="ID" value="@blogModel.ID" />
+
+    <div class="form-group">
+        <label>
+            Name: <input type="text" name="Name" value="@blogModel.Name" />
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            Content: <input type="text" name="Content" value="@blogModel.Content" />
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            Author Email: <input type="text" name="AuthorEmail" value="@blogModel.AuthorEmail" />
+        </label>
+    </div>
+    <div class="form-group">
+
+        <input type="submit" name="Submit" value="@buttonMode" class="btn btn-primary" />
+    </div>
+</form>
+
+@code {
+    private BgModel _blogModel = new BgModel();
+
+    protected string url {
+        get
+        {
+            if (_blogModel.ID < 1) {
+                return String.Concat(baseUrl, "/Create").Replace("//", "/");
+            }
+            return String.Concat(baseUrl, "/Edit/", _blogModel.ID.ToString().Replace("//", "/"));
+        }
+    }
+
+    private string buttonMode
+    {
+        get
+        {
+            if (_blogModel.ID < 1)
+            {
+                return "Create New";
+            }
+            return "Update Blog";
+        }
+    }
+
+    [Parameter]
+    public BgModel blogModel
+    {
+        set
+        {
+            _blogModel = value;
+        }
+        get {
+            return _blogModel;
+        }
+    }
+
+    [Parameter]
+    public String formMethod { get; set; }
+
+    [Parameter]
+    public String baseUrl { get; set; }
+}
